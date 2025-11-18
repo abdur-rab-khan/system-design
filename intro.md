@@ -14,7 +14,9 @@
       - [Horizontal Scaling](#horizontal-scaling)
       - [Vertical Scaling](#vertical-scaling)
   - [System Design Topics](#system-design-topics)
-    - [Load Balancing](#load-balancing)
+    - [Load Balancer](#load-balancer)
+    - [Message Queues](#message-queues)
+    - [Task Queues](#task-queues)
 
 ## Key Concepts
 
@@ -111,4 +113,19 @@
 
 ## System Design Topics
 
-### [Load Balancing](topics/load-balancing.md)
+### [Load Balancer](topics/load-balancer.md)
+
+- Load balancers are critical components in distributed systems, which help to distribute incoming network traffic across multiple servers or resources it totally depends on the load balancing algorithm used.
+- By distributing the load, load balancers help to improve system performance, increase availability, and ensure fault tolerance.
+
+### [Message Queues](topics/message-queue.md)
+
+- **Message Queues** is similar to post office model, where messages are posted and eventually it will be delivered to the recipient.
+- This is the same analogy we can use in software systems, where different components of a system communicate with each other by sending and receiving messages through a message queue.
+- Message queues are commonly used in distributed systems to decouple components and enable asynchronous processing, particularly for tasks that are time-consuming (e.g., sending emails, processing images) or require reliable delivery (e.g., order processing, payment processing).
+
+### [Task Queues](topics/task-queue.md)
+
+- **Task Queue** is a type of message queue that is specifically designed for task which are compute-intensive and time-consuming in nature.
+- Task queues are commonly used in distributed systems to offload tasks from the main application thread and process them asynchronously in the background, improving system performance and responsiveness.
+- Task queues are often used for tasks such as sending emails, processing images, generating reports, video encoding, and data processing.
