@@ -13,10 +13,20 @@
     - [Horizontal Scaling vs Vertical Scaling](#horizontal-scaling-vs-vertical-scaling)
       - [Horizontal Scaling](#horizontal-scaling)
       - [Vertical Scaling](#vertical-scaling)
+    - [Monolithic vs Microservices Architecture](#monolithic-vs-microservices-architecture)
+      - [Monolithic Architecture](#monolithic-architecture)
+      - [Microservices Architecture](#microservices-architecture)
+    - [Single Point of Failure (SPOF)](#single-point-of-failure-spof)
   - [System Design Topics](#system-design-topics)
     - [Load Balancer](#load-balancer)
     - [Message Queues](#message-queues)
     - [Task Queues](#task-queues)
+    - [Caching](#caching)
+    - [Content Delivery Network (CDN)](#content-delivery-network-cdn)
+    - [Background Jobs (Event Driven Architecture)](#background-jobs-event-driven-architecture)
+    - [DNS (Domain Name System)](#dns-domain-name-system)
+    - [Application Layer](#application-layer)
+    - [API Gateway](#api-gateway)
 
 ## Key Concepts
 
@@ -111,11 +121,69 @@
 - Vertical scaling is simpler to implement but it has limitations, as there is a maximum capacity for a single machine.
 - It can lead to a single point of failure, as the entire system relies on a single machine.
 
+### Monolithic vs Microservices Architecture
+
+#### Monolithic Architecture
+
+- A **Monolithic Architecture** is a traditional software architecture where all components of an application are tightly coupled and run as a single unit, It commonly use single codebase for the entire application.
+- In a monolithic architecture, all functionalities (e.g., user interface, business logic, data access) are integrated into a single application, making it easier to develop and deploy initially.
+- However, If spike demands of one component, the entire application needs to be scaled, which can be inefficient and costly.
+- In monolithic architecture, a failure in one component can affect the entire application, which can lead single point of failure.
+
+- **Advantages and Disadvantages**
+
+| Advantages                                     | Disadvantages                                                     |
+| ---------------------------------------------- | ----------------------------------------------------------------- |
+| Easier to develop and deploy initially.        | Difficult to scale individual components.                         |
+| Simpler to test and debug.                     | Can become complex and hard to maintain as the application grows. |
+| Better performance due to fewer network calls. | Limited flexibility in technology stack and deployment options.   |
+
+#### Microservices Architecture
+
+- A **Microservices Architecture** is a modern software architecture where an application is composed of small, independent services that communicate with each other through APIs.
+- Each service is responsible for a specific functionality (e.g., user management, order processing, payment handling) and can be **developed**, **deployed**, and **scaled independently**.
+- Spike demands of on service can be scaled independently without affecting other services, making it more efficient and cost-effective.
+- In microservices architecture, a failure in one service does not necessarily affect the entire application, improving fault tolerance.
+- In microservices architecture, reverse proxy servers (e.g., API Gateway) are often used to route requests to the appropriate services and handle cross-cutting concerns like authentication, logging, and rate limiting.
+- Microservices architecture is commonly used in **cloud-native applications**, **e-commerce platforms**, and **large-scale web applications**.
+
+  ![Monolithic vs Microservices Architecture](https://martinfowler.com/articles/microservices/images/decentralised-data.png)
+
+- **Advantages and Disadvantages**
+
+  | Advantages                                     | Disadvantages                                                        |
+  | ---------------------------------------------- | -------------------------------------------------------------------- |
+  | Allows independent development and deployment. | More complex to develop and deploy initially.                        |
+  | Easier to scale individual services.           | Requires robust inter-service communication and management.          |
+  | Improves fault tolerance and resilience.       | Can lead to increased latency due to network calls between services. |
+
+### Single Point of Failure (SPOF)
+
+- A **Single Point of Failure (SPOF)** is one of the most critical concepts in system design, which refers to a component or part of a system that, if it fails, will cause the entire system to fail or become unavailable.
+- It is very important to think during build a system to eliminate or minimize single points of failure to ensure high availability and reliability.
+
+- In system design every components can be a single point of failure, including:
+
+  - **Servers:** If a single server hosts a critical application or service, its failure can lead to system downtime.
+  - **Databases:** A single database instance can be a SPOF if it is not replicated or backed up.
+  - **Network Components:** Routers, switches, or firewalls that are not redundant can become SPOFs.
+  - **Load Balancer:** If there is only one load balancer and it fails, the entire system can become inaccessible.
+  - **Entire Data Center:** If all resources are hosted in a single data center, a failure at that location can lead to complete system outage.
+
+- **Strategies to Mitigate SPOF:**
+  - **Redundancy:** Implementing redundant components (e.g., multiple servers, databases) to ensure that if one fails, another can take over, like we can use concepts like fail-over and replication.
+  - **Load Balancing:** Distributing traffic across multiple servers to prevent any single server from becoming a SPOF.
+  - **Geographic Distribution:** Hosting resources in multiple data centers or cloud regions to mitigate the risk of a single location failure.
+  - **Regular Backups:** Ensuring that critical data is regularly backed up and can be restored in case of failure.
+  - **Monitoring and Alerts:** Implementing monitoring systems to detect failures early and alert the relevant teams for quick response.
+  - **Automated Failover:** Setting up automated failover mechanisms to switch to backup systems seamlessly in case of a failure.
+  - **Decentralization:** Designing systems in a way that does not rely on a single component or service for critical functionality.
+
 ## System Design Topics
 
 ### [Load Balancer](topics/load-balancer.md)
 
-- Load balancers are critical components in distributed systems, which help to distribute incoming network traffic across multiple servers or resources it totally depends on the load balancing algorithm used.
+- **Load balancers** are critical components in distributed systems, which help to distribute incoming network traffic across multiple servers or resources it totally depends on the load balancing algorithm used.
 - By distributing the load, load balancers help to improve system performance, increase availability, and ensure fault tolerance.
 
 ### [Message Queues](topics/message-queue.md)
@@ -124,8 +192,28 @@
 - This is the same analogy we can use in software systems, where different components of a system communicate with each other by sending and receiving messages through a message queue.
 - Message queues are commonly used in distributed systems to decouple components and enable asynchronous processing, particularly for tasks that are time-consuming (e.g., sending emails, processing images) or require reliable delivery (e.g., order processing, payment processing).
 
-### [Task Queues](topics/task-queue.md)
+### Task Queues
 
 - **Task Queue** is a type of message queue that is specifically designed for task which are compute-intensive and time-consuming in nature.
 - Task queues are commonly used in distributed systems to offload tasks from the main application thread and process them asynchronously in the background, improving system performance and responsiveness.
-- Task queues are often used for tasks such as sending emails, processing images, generating reports, video encoding, and data processing.
+- Task queues are often used for tasks which require significant processing time, such as image processing, data analysis, and sending emails.
+- Popular task queue systems include **Celery** (Python), **RQ (Redis Queue)**, and **Bull** (Node.js).
+
+### [Caching](topics/caching.md)
+
+- **Caching** is a technique used to store frequently accessed data in a temporary storage location (cache) to improve system performance and reduce latency.
+- This reduces the need to repeatedly fetch data from slower storage systems (e.g., databases, external APIs), resulting in faster response times and reduced load on backend systems.
+
+### [Content Delivery Network (CDN)](topics/cdn.md)
+
+- A **Content Delivery Network(CDN)** is the network of distributed servers across various geographical locations that servers cached static content (e.g., images, videos, stylesheets, scripts) to users based on their geographic location.
+- CDNs help to improve website performance, reduce latency, and enhance user experience by delivering content from servers that are closer to the user's location using DNS routing and caching mechanisms.
+- Popular CDN providers include **Cloudflare**, **Akamai**, **Amazon CloudFront**, and **Fastly**.
+
+### Background Jobs (Event Driven Architecture)
+
+### DNS (Domain Name System)
+
+### Application Layer
+
+### API Gateway
