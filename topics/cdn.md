@@ -4,28 +4,28 @@
 
 - [Content Delivery Network (CDN)](#content-delivery-network-cdn)
   - [Types of Content Delivered by CDNs](#types-of-content-delivered-by-cdns)
-    - [Pull CDN](#pull-cdn)
     - [Push CDN](#push-cdn)
+    - [Pull CDN](#pull-cdn)
   - [Benefits of Using a CDN](#benefits-of-using-a-cdn)
   - [Disadvantages of Using a CDN](#disadvantages-of-using-a-cdn)
   - [Popular CDN Providers](#popular-cdn-providers)
 
 ## Types of Content Delivered by CDNs
 
-### Pull CDN
-
-- In a **Pull CDN** setup, the CDN retrieves content from the origin server only when a user requests it for the first time.
-- After the initial request, the content is cached on the CDN servers for subsequent requests and rewrite the URL to point to the CDN.
-- This approach is efficient for content that is not frequently updated, as it reduces the load on the origin server and speeds up content delivery for users.
-- A **time-to-live (TTL)** is defines how long the content will be cached on the CDN servers before it is considered stale and needs to be refreshed from the origin server.
-
 ### Push CDN
 
-- In a **Push CDN** setup, the content is proactively uploaded or "pushed" to the CDN servers whenever it is updated on the origin server.
-- This approach is suitable for content that changes frequently or requires immediate availability on the CDN servers.
-- The origin server is responsible for managing the distribution of content to the CDN servers, ensuring that the latest version is always available to users.
-- Push CDNs are often used for dynamic content, such as live streaming or frequently updated web applications.
-- Content is typically uploaded to the CDN using APIs, FTP, or other file transfer methods.
+- In a **Push CDN**, contents are manually "uploaded" or "pushed" to the CDN's server by the engineer or content creator. This method is typically used for static content that does not change frequently, such as images, videos, and documents.
+- Once the content is pushed to the CDN, it is cached on the CDN's servers and delivered to users from the nearest server location.
+- Push CDNs are often used for websites with a large amount of static content, as they can significantly improve load times and reduce the load on the origin server.
+- Example: A Game company pushing game update files to a CDN for players to download from all over the world.
+
+### Pull CDN
+
+- In a **Pull CDN**, the CDN automatically retrieves or "pulls" content from the origin server when a user requests it for the first time. The content is then cached on the CDN's servers for subsequent requests.
+- This method is commonly used for dynamic content that may change frequently, such as web pages, APIs, and user-generated content.
+- Pull CDNs are beneficial for websites that require real-time updates, as they ensure that users always receive the most up-to-date content.
+- Time to Live (TTL) settings can be configured to control how long content is cached on the CDN before it is refreshed from the origin server.
+- Example: A news website using a Pull CDN to deliver the latest articles and updates to readers.
 
 ## Benefits of Using a CDN
 

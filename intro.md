@@ -23,9 +23,11 @@
     - [Task Queues](#task-queues)
     - [Caching](#caching)
     - [Content Delivery Network (CDN)](#content-delivery-network-cdn)
-    - [Background Jobs (Event Driven Architecture)](#background-jobs-event-driven-architecture)
+    - [Event Driven Architecture (EDA)](#event-driven-architecture-eda)
+      - [Advantages of EDA](#advantages-of-eda)
+      - [Disadvantages of EDA](#disadvantages-of-eda)
+      - [Publications and Subscribers](#publications-and-subscribers)
     - [DNS (Domain Name System)](#dns-domain-name-system)
-    - [Application Layer](#application-layer)
     - [API Gateway](#api-gateway)
 
 ## Key Concepts
@@ -210,10 +212,56 @@
 - CDNs help to improve website performance, reduce latency, and enhance user experience by delivering content from servers that are closer to the user's location using DNS routing and caching mechanisms.
 - Popular CDN providers include **Cloudflare**, **Akamai**, **Amazon CloudFront**, and **Fastly**.
 
-### Background Jobs (Event Driven Architecture)
+### Event Driven Architecture (EDA)
 
-### DNS (Domain Name System)
+- An **Event driven architecture (EDA)** is a system design pattern used to build complex application, Using **EDA** we can easily scale, decouple system.
+- Event driven architecture (EDA) consists four things:
+  1. **Publisher:** A **Publisher** is a user which do something, like user place an order. In this case user (Publisher) make can event **place an order.**
+  2. **Message:** A **Message** is the data, In place order case would be **`product_id`**, **`...other_product_details`**.
+  3. **Message Broker:** A **Message Broker** is a peace of software that have task to distribute **Message** among all required **systems**.
+  4. **Subscriber:** A **Subscriber** is **systems** that receive message, based on that it can perform tasks.
 
-### Application Layer
+#### Advantages of EDA
+
+1. **Loose coupling:** Subscribers does not depend on publisher, they only know about message broker. So if Subscribers needs to scale or change, publisher does not need to know about it.
+2. **Scales Well:** As we know that in EDA publisher and subscriber are decoupled, so we can easily scale them independently based on the load.
+3. **Good for real-time:** EDA is good for real-time applications where events need to be processed as they occur, like chat applications, online gaming, etc.
+4. **Replay:** In EDA messages can be stored in message broker, so if subscriber goes down, it can process messages later when it comes back up.
+5. **Asynchronous Processing:** EDA allows for asynchronous processing of events, which can improve system performance and responsiveness by decoupling event producers from event consumers.
+
+#### Disadvantages of EDA
+
+1. **Complexity:** EDA can introduce additional complexity to the system, as it requires managing message brokers, handling message delivery, and ensuring data consistency across different components.
+2. **Debugging and Testing:** Debugging and testing event-driven systems can be more challenging, as events may be processed asynchronously and out of order, making it difficult to trace the flow of data and identify issues.
+3. **Duplicate Messages:** In some cases, message brokers may deliver duplicate messages to subscribers, which can lead to data inconsistencies if not handled properly.
+
+#### Publications and Subscribers
+
+- In an event-driven architecture (EDA), **Publishers** and **Subscribers** are two key components that facilitate communication between different parts of the system.
+- **Publishers:**
+  - Publishers are the components or services that produce events based on certain actions or changes in the system.
+  - For example, in an e-commerce application, a publisher could be the order service that generates an event when a new order is placed.
+  - Publishers typically do not have knowledge of the subscribers; they simply send events to the message broker.
+- **Subscribers:**
+  - Subscribers are the components or services that consume events produced by publishers.
+  - Continuing with the e-commerce example, a subscriber could be the inventory service that listens for order events and updates stock levels accordingly.
+  - Subscribers register their interest in specific types of events with the message broker, which then delivers relevant events to them.
+- **Example:**
+  - In youtube when a user uploads a video (Publisher), an event is generated and sent to the message broker.
+  - Various subscribers, such as the **video processing**, **notification service**, and **analytics service**, listen for the video upload event and perform their respective tasks (e.g., processing the video, sending notifications to subscribers, updating analytics data).
+
+### [DNS (Domain Name System)](topics/dns.md)
+
+- A **Domain Name System (DNS)** is a phonebook of the internet, which translates human-readable domain names (e.g., www.example.com) into machine-readable IP address (e.g., 18.10.0.100) that computers use to identify each other on the network.
 
 ### API Gateway
+
+- A **API Gateway** is a server that acts as a gate keeper for API requests from clients to backend services.
+- So using an API Gateway, clients can only interact with the API Gateway instead of directly communicating with backend services.
+- It handles various responsibilities such as:
+  - **Request Routing**: Directing incoming API requests to the appropriate backend services based on the request path, method, or other criteria.
+  - **Authentication and Authorization**: Validating client credentials and ensuring that only authorized clients can access specific APIs.
+  - **Rate Limiting and Throttling**: Controlling the number of requests a client can make to prevent abuse and ensure fair usage of resources.
+  - **Load Balancing**: Distributing incoming API requests across multiple instances of backend services to ensure high availability and optimal resource utilization.
+  - **Caching**: Storing frequently accessed API responses to reduce latency and improve performance.
+  - **Transformation**: Modifying request and response data formats to ensure compatibility between clients and backend services.
