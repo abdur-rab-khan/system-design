@@ -1,9 +1,9 @@
-# System Design
+# High System Design
 
 > A system design is a process of breaking down a complex application or service into smaller, manageable components. It involves defining the architecture, components, modules, interfaces, and data for a system to satisfy specified requirements. \
 > System design is crucial for building scalable, reliable, and maintainable systems, as it helps in understanding how different parts of the system interact with each other and how they can be optimized for performance and efficiency.
 
-- [System Design](#system-design)
+- [High System Design](#high-system-design)
   - [Key Concepts](#key-concepts)
     - [Performance and Scalability](#performance-and-scalability)
     - [Latency vs Throughput](#latency-vs-throughput)
@@ -265,3 +265,20 @@
   - **Load Balancing**: Distributing incoming API requests across multiple instances of backend services to ensure high availability and optimal resource utilization.
   - **Caching**: Storing frequently accessed API responses to reduce latency and improve performance.
   - **Transformation**: Modifying request and response data formats to ensure compatibility between clients and backend services.
+
+[## Security Measures](topics/security-measures.md)
+
+- Security in a system design is very important to protect data, ensure privacy, and maintain the integrity of the system.
+- Some common security measures include:
+
+  - **Authentication and Authorization:** Implementing robust authentication mechanisms (e.g., OAuth, JWT) to verify user identities and authorization protocols to control access to resources.
+
+  - **Data Encryption:** Using encryption techniques (e.g., SSL/TLS for data in transit, AES for data at rest) to protect sensitive data from unauthorized access.
+
+  - **Firewalls and Intrusion Detection Systems (IDS):** Deploying firewalls to filter incoming and outgoing traffic and IDS to monitor network traffic for suspicious activities.
+
+  - **Regular Security Audits:** Conducting regular security assessments and audits to identify vulnerabilities and ensure compliance with security standards.
+
+  - **Secure Coding Practices:** Following secure coding guidelines to prevent common vulnerabilities such as SQL injection, cross-site scripting (XSS), and buffer overflows.
+
+  - **Backup and Disaster Recovery:** Implementing backup strategies and disaster recovery plans to ensure data availability and integrity in case of security breaches or system failures.
