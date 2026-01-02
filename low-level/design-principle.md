@@ -1,48 +1,17 @@
-# Low Level System Design
+# Design Principles
 
-> **Low level system design** is the process of designing the internal components and architecture of a software system by using pre-define principles and patterns. It focuses on the detailed implementation of individual modules, classes, and functions, ensuring that they work together efficiently to meet the overall system requirements.
+- [Design Principles](#design-principles)
+  - [1. SOLID Principles](#1-solid-principles)
+    - [1. Single Responsibility Principle (SRP)](#1-single-responsibility-principle-srp)
+    - [2. Open/Closed Principle (OCP)](#2-openclosed-principle-ocp)
+    - [3. Liskov Substitution Principle (LSP)](#3-liskov-substitution-principle-lsp)
+    - [4. Interface Segregation Principle (ISP)](#4-interface-segregation-principle-isp)
+    - [5. Dependency Inversion Principle (DIP)](#5-dependency-inversion-principle-dip)
+  - [2. DRY Principle (Don't Repeat Yourself)](#2-dry-principle-dont-repeat-yourself)
+  - [3. KISS Principle (Keep It Simple, Stupid)](#3-kiss-principle-keep-it-simple-stupid)
+  - [3. YAGNI Principle (You Aren't Gonna Need It)](#3-yagni-principle-you-arent-gonna-need-it)
 
-- [Low Level System Design](#low-level-system-design)
-  - [Key Concepts](#key-concepts)
-  - [OOPS Concepts](#oops-concepts)
-  - [Design Principles](#design-principles)
-    - [1. SOLID Principles](#1-solid-principles)
-      - [1. Single Responsibility Principle (SRP)](#1-single-responsibility-principle-srp)
-      - [2. Open/Closed Principle (OCP)](#2-openclosed-principle-ocp)
-      - [3. Liskov Substitution Principle (LSP)](#3-liskov-substitution-principle-lsp)
-      - [4. Interface Segregation Principle (ISP)](#4-interface-segregation-principle-isp)
-      - [5. Dependency Inversion Principle (DIP)](#5-dependency-inversion-principle-dip)
-    - [2. DRY Principle (Don't Repeat Yourself)](#2-dry-principle-dont-repeat-yourself)
-    - [3. KISS Principle (Keep It Simple, Stupid)](#3-kiss-principle-keep-it-simple-stupid)
-    - [3. YAGNI Principle (You Aren't Gonna Need It)](#3-yagni-principle-you-arent-gonna-need-it)
-
-## Key Concepts
-
-1. **Modularity**: Breaking down the system into smaller, manageable components or modules that can be developed, tested, and maintained independently, Interface is a key aspect of modularity that defines the methods and properties that a module or class exposes to other parts of the system.
-2. **Encapsulation**: Hiding the internal details of a module or class and exposing only the necessary interfaces for interaction.
-3. **Cohesion**: Ensuring that the elements within a module or class are closely related and work together to achieve a specific functionality.
-4. **Coupling**: Minimizing dependencies between different modules or classes to reduce the impact of changes and improve maintainability.
-5. **Design Patterns**: Reusable solutions to common design problems, such as Singleton, Factory, Observer, and Strategy patterns.
-6. **Data Structures**: Choosing appropriate data structures (e.g., arrays, linked lists, trees, hash tables) to optimize performance and memory usage.
-7. **Algorithms**: Implementing efficient algorithms for data processing, searching, sorting, and other operations to enhance system performance.
-8. **Error Handling**: Designing robust error handling mechanisms to manage exceptions and ensure system stability.
-9. **Testing**: Creating unit tests, integration tests, and system tests to validate the functionality and performance of individual components and the overall system.
-10. **Documentation**: Maintaining clear and comprehensive documentation of the design decisions, architecture, and implementation details for future reference and collaboration.
-
-## OOPS Concepts
-
-- `OOPS (Object-Oriented Programming System)` is a programming technique that uses objects and classes to structure code in a way that is modular, reusable, and easier to maintain. The main concepts of OOPS include:
-
-  1. **Class**: A blueprint for creating objects that defines the properties (attributes) and behaviors (methods) of the objects.
-  2. **Object**: An instance of a class that encapsulates data and behavior related to that data, using single class multiple objects can be created.
-  3. **Inheritance**: A mechanism that allows a new class (subclass) to inherit properties and behaviors from an existing class (superclass), promoting code reuse and establishing hierarchical relationships.
-  4. **Polymorphism**: The term poly means many forms, it allows methods to do different things based on the type of methods passed to it, it can be achieved through method overloading and method overriding.
-  5. **Encapsulation**: The practice of bundling data (attributes) and methods (functions) that operate on the data into a single unit (class), restricting direct access to some of the object's components.
-  6. **Abstraction**: In OOPS, abstraction is the concept of hiding the complex implementation details suppose in a class there are multiple methods but we want to expose only few methods to the user, so that user can interact with the class without knowing the internal complexity.
-
-## Design Principles
-
-### 1. SOLID Principles
+## 1. SOLID Principles
 
 - **SOLID** Principles are a set of five design principles that help create maintainable and scalable software systems. They are:
   1. **Single Responsibility Principle (SRP)**
@@ -51,7 +20,7 @@
   4. **Interface Segregation Principle (ISP)**
   5. **Dependency Inversion Principle (DIP)**
 
-#### 1. Single Responsibility Principle (SRP)
+### 1. Single Responsibility Principle (SRP)
 
 - It says that a class should have only one responsibility or reason to change. This means that a class should only have one job or function.
 - Imagine, A backer who is bake the bread, that job is to bake high quality bread, ensure equality of the bread while baking, this is best example of single responsibility principle. Because a baker could have other responsibilities like managing the inventory, handling customer orders, etc. But if we follow SRP, we would create separate classes for each of these responsibilities.
@@ -111,9 +80,11 @@
   main();
   ```
 
-#### 2. Open/Closed Principle (OCP)
+### 2. Open/Closed Principle (OCP)
 
 - This principle states that software entities (classes, modules, functions, etc.) should be open for extension (adding new functionality) but closed for modification (existing code should not be changed).
+- It helps to add new features without touching the existing code, that may introduce bugs or break existing functionality.
+- Our code have to be designed in a way that new functionality can be added by creating new classes or modules that extend the existing ones, rather than modifying the existing code.
 - For example, consider a payment processing system that initially supports only credit card payments. If we want to add support for PayPal payments, we should be able to do so without modifying the existing credit card payment code.
 
 - Example: Game character attack using OCP:
@@ -233,9 +204,9 @@
   }
   ```
 
-#### 3. Liskov Substitution Principle (LSP)
+### 3. Liskov Substitution Principle (LSP)
 
-- This principle states that objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program. In other words, subclasses should be able to stand in for their parent classes without causing unexpected behavior.
+- This principle states that objects of a superclass should be replaceable with objects of a subclass without breaking the program.
 - For example, consider a class `Bird` with a method `fly()`. If we have a subclass `Penguin` that cannot fly, substituting a `Penguin` object for a `Bird` object would violate LSP.
 - It could seems similar to OCP but they are different,
   - **OCP** is about extending behavior without modifying existing code.
@@ -332,7 +303,7 @@
   }
   ```
 
-#### 4. Interface Segregation Principle (ISP)
+### 4. Interface Segregation Principle (ISP)
 
 - This is the first principle that applies to interfaces not to classes. It states that no client should be forced to implement which is irrelevant to them. In other words, interfaces should be specific to the clients that use them, rather than being general-purpose.
 - For example, consider an interface `Animal` with methods `fly()`, `swim()`, and `walk()`. A class `Dog` that implements this interface would be forced to provide implementations for all three methods, even though dogs cannot fly or swim. To follow ISP, we should create separate interfaces for each behavior.
@@ -370,7 +341,7 @@
   };
   ```
 
-#### 5. Dependency Inversion Principle (DIP)
+### 5. Dependency Inversion Principle (DIP)
 
 - The principle states that high-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., interfaces). Additionally, abstractions should not depend on details; details should depend on abstractions.
 - For example, consider a class `ReportGenerator` that depends on a concrete class `PDFExporter` to generate reports in PDF format. To follow DIP, we should introduce an abstraction (interface) `Exporter` that both `ReportGenerator` and `PDFExporter` depend on. This way, we can easily switch to a different exporter (e.g., `ExcelExporter`) without modifying the `ReportGenerator` class.
@@ -550,7 +521,7 @@
 
   - It does not have to know about the concrete classes, it just depends on the abstraction `Peripheral` interface.
 
-### 2. DRY Principle (Don't Repeat Yourself)
+## 2. DRY Principle (Don't Repeat Yourself)
 
 - The DRY principle states that every piece of knowledge or logic should have a single, unambiguous representation within a system. In other words, you should avoid duplicating code or logic in multiple places. Instead, you should encapsulate it in a single location and reuse it whenever needed.
 - For example, consider a scenario where you have a function that calculates the area of a rectangle. If you need to calculate the area of a rectangle in multiple parts of your code, you should create a single function for this calculation and call it whenever needed, rather than duplicating the area calculation logic in each place.
@@ -578,7 +549,7 @@
       return 3.14 * radius * radius
   ```
 
-### 3. KISS Principle (Keep It Simple, Stupid)
+## 3. KISS Principle (Keep It Simple, Stupid)
 
 - The KISS principle emphasizes the importance of simplicity in design and implementation. It suggests that systems should be kept as simple as possible, avoiding unnecessary complexity and over-engineering. Simple designs are easier to understand, maintain, and modify.
 - For example, when designing a user interface, it's better to have a clean and straightforward layout with essential features rather than a cluttered interface with too many options and features that may confuse users.
@@ -644,7 +615,7 @@
       return valid_credentials.get(username) == password
   ```
 
-### 3. YAGNI Principle (You Aren't Gonna Need It)
+## 3. YAGNI Principle (You Aren't Gonna Need It)
 
 - The YAGNI principle states that you should not add functionality or features to a system until they are actually needed. This means that you should avoid implementing features based on assumptions about future requirements, as this can lead to unnecessary complexity and wasted effort.
 - For example, if you're developing a web application and you think that users might want to upload profile pictures in the future, you shouldn't implement this feature until there is a clear requirement for it. Instead, focus on delivering the core functionality first.
