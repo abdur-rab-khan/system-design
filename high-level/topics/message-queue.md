@@ -1,5 +1,7 @@
 # Message Queues
 
+[Go to Intro](../intro.md)
+
 > Message Queues is very important concept in system design which allows as to asynchronously communicate between different components of a system and make them to process tasks independently.
 
 ## What is a Message Queue?

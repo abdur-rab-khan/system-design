@@ -1,5 +1,7 @@
 # Load Balancer
 
+[Back to Intro](../intro.md)
+
 > A **load balancer** is a device or software that distributes network or application traffic across a number of servers. The main goal of a load balancer is to optimize resource use, maximize throughput, minimize response time, and avoid overload on any single server.
 
 - [Load Balancer](#load-balancer)
