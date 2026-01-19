@@ -788,24 +788,24 @@
 			"typeName": "binding"
 		},
 		{
-			"x": 288.9761460949618,
-			"y": 609.4228146878379,
-			"z": 0.3452639465407352,
+			"x": 239.73989766628165,
+			"y": 556.852163031732,
+			"z": 0.35186280666035585,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
 		},
 		{
-			"x": -38.04597554883071,
-			"y": -131.4086775786384,
+			"x": -4.344502271461579,
+			"y": -4.479982727152446,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
 			"meta": {},
 			"id": "shape:16YrXIZLS5U_r9pSGk2pw",
 			"type": "group",
-			"parentId": "page:page",
-			"index": "a82IWvfV",
+			"parentId": "shape:cONXljLxmP8wY3Ov-eue6",
+			"index": "a1",
 			"props": {},
 			"typeName": "shape"
 		},
@@ -1324,9 +1324,7 @@
 		{
 			"editingShapeId": null,
 			"croppingShapeId": null,
-			"selectedShapeIds": [
-				"shape:16YrXIZLS5U_r9pSGk2pw"
-			],
+			"selectedShapeIds": [],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
@@ -2420,6 +2418,20 @@
 			"typeName": "shape"
 		},
 		{
+			"x": -57.85082388936053,
+			"y": -102.7793442394941,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:cONXljLxmP8wY3Ov-eue6",
+			"type": "group",
+			"parentId": "page:page",
+			"index": "avyfiZ5V",
+			"props": {},
+			"typeName": "shape"
+		},
+		{
 			"meta": {},
 			"id": "binding:gUNoc9fA8ub1RzqbYZGBH",
 			"type": "arrow",
@@ -2505,16 +2517,16 @@
 			"typeName": "binding"
 		},
 		{
-			"x": 1269.383980416092,
-			"y": 207.65194312897614,
+			"x": 1303.0854536934612,
+			"y": 334.5806379804621,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
 			"meta": {},
 			"id": "shape:wwo2B1OtReHeIO8xoKAoD",
 			"type": "group",
-			"parentId": "page:page",
-			"index": "avyfiZ5V",
+			"parentId": "shape:cONXljLxmP8wY3Ov-eue6",
+			"index": "a2NozNal",
 			"props": {},
 			"typeName": "shape"
 		},
@@ -3311,17 +3323,17 @@
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
-				"type": "ew-resize",
+				"type": "default",
 				"rotation": 0
 			},
-			"isFocusMode": false,
+			"isFocusMode": true,
 			"exportBackground": true,
 			"isDebugMode": false,
 			"isToolLocked": false,
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1572,
+				"w": 1575,
 				"h": 964
 			},
 			"insets": [
@@ -3331,7 +3343,7 @@
 				false
 			],
 			"zoomBrush": null,
-			"isGridMode": false,
+			"isGridMode": true,
 			"isPenMode": false,
 			"chatMessage": "",
 			"isChatting": false,
