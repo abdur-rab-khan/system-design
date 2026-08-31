@@ -1,0 +1,15 @@
+[
+  {
+    "label": "C++ Program Debugging",
+    "build": {
+     "command": "g++",
+     "args": ["--std=c++23", "-g", "$ZED_FILE", "-o", "$ZED_DIRNAME/$ZED_STEM.exe"],
+     "hide": "always"
+    },
+    "request": "launch",
+    "adapter": "CodeLLDB",
+    "program": "$ZED_DIRNAME/$ZED_STEM.exe",
+    "expressions": "native",
+    "exitCommands": ["platform shell del \"$ZED_DIRNAME\\$ZED_STEM.exe\""]
+  }
+]
