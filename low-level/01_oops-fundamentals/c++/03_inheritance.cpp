@@ -12,8 +12,8 @@ class Character {
 
    public:
     Character(std::string name, int health) : name(std::move(name)), health(health) {}
+    virtual ~Character()    = default;
     virtual void useSkill() = 0;
-    ~Character()            = default;
 
     void attack(int dmg) {
         health -= dmg;
