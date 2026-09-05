@@ -1,0 +1,49 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "shift shift": "file_finder::Toggle",
+      "ctrl-1": "workspace::ActivatePreviousPane",
+      "ctrl-2": "workspace::ActivateLastPane",
+      "ctrl-alt-left": "workspace::ActivatePreviousPane",
+      "ctrl-alt-right": "workspace::ActivateNextPane",
+      "alt-a": ["task::Spawn", { "task_name": "Run Android" }],
+      "alt-s": ["task::Spawn", { "task_name": "Run Screenshot" }],
+      "alt-d": ["task::Spawn", { "task_name": "Run Scrapper" }],
+      "ctrl-f5": ["task::Spawn", { "task_name": "Run C++ Program" }],
+      "f5": ["debugger::Start", { "label": "C++ Program Debugging" }],
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-shift-enter": "editor::GoToDefinition",
+    },
+  },
+  {
+    "context": "debugger_running",
+    "bindings": {
+      "shift-f11": "debugger::StepInto",
+      "shift-f12": "debugger::StepOut",
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "f": "project_panel::NewFile"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+]
