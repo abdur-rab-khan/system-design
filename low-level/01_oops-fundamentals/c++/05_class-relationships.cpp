@@ -1,0 +1,14 @@
+/*
+ * 🟡 Association:
+ *
+ *
+ * 🟡 Aggregation:
+ *
+ *
+ * 🟡 Composition:
+ *
+ *
+ * 🟡 Dependency:
+ *
+ *
+ */
