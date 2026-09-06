@@ -1,6 +1,6 @@
 # Storage Type in System Design
 
-> In system design, the choice of storage type is crucial for determining how data is stored, accessed, and managed. Different storage types offer various advantages and trade-offs in terms of performance, scalability, durability, and cost.
+> In System Design, Choosing storage type is crucial for determining **how/what data will be store**, **access**, and **manage**. Different storage types offer various advantages and trade-offs in terms of **performance**, **scalability**, **durability**, and cost.
 
 - [Storage Type in System Design](#storage-type-in-system-design)
   - [Common Storage Types](#common-storage-types)
@@ -39,9 +39,9 @@
 
 - **Examples**: Network Attached Storage (NAS), Amazon EFS, Google Filestore
 
-- Advantages: Easy to use, supports file sharing, and good for unstructured data.
+- **Advantages**: Easy to use, supports file sharing, and good for unstructured data.
 
-- Disadvantages: May have performance limitations for high I/O operations and less flexibility compared to block storage.
+- **Disadvantages**: May have performance limitations for high I/O operations and less flexibility compared to block storage.
 
 ### 3. Object Storage
 
@@ -52,24 +52,19 @@
   - Unlike block and file storage, object storage does not use a traditional file hierarchy, making it ideal for cloud storage solutions.
 
 - **Use Cases**: Best for storing large volumes of unstructured data, such as media files, backups, and big data.
-- Examples: Amazon S3, Google Cloud Storage, Azure Blob Storage
-- Advantages: Highly scalable, cost-effective for large data sets, and easy to manage.
-- Disadvantages: Higher latency for data retrieval and not suitable for applications requiring low-latency access.
+- **Examples**: Amazon S3, Google Cloud Storage, Azure Blob Storage
+- **Advantages**: Highly scalable, cost-effective for large data sets, and easy to manage.
+- **Disadvantages**: Higher latency for data retrieval and not suitable for applications requiring low-latency access.
 
-## Choosing the Right Storage Type
+## How to choose Right Storage
 
-When selecting a storage type for your system design, consider the following factors:
+- When selecting a storage type for your system design, consider the following factors:
 
-- **Performance Requirements**: Determine the read/write speed and latency needs of your application.
-
-- **Scalability**: Assess how much data you expect to store and how quickly it will grow.
-
-- **Durability and Availability**: Evaluate the importance of data redundancy and uptime for your application.
-
-- **Cost**: Analyze the cost implications of each storage type based on your budget and usage patterns.
-
-- **Data Structure**: Consider whether your data is structured, semi-structured, or unstructured, as this will influence the choice of storage type.
-
-- **Access Patterns**: Understand how frequently and in what manner your application will access the data (e.g., random vs. sequential access).
+  1. **Performance Requirements**: Determine the read/write speed and latency needs of your application.
+  2. **Scalability**: Assess how much data you expect to store and how quickly it will grow.
+  3. **Durability and Availability**: Evaluate the importance of data redundancy and uptime for your application.
+  4. **Cost**: Analyze the cost implications of each storage type based on your budget and usage patterns.
+  5. **Data Structure**: Consider whether your data is structured, semi-structured, or unstructured, as this will influence the choice of storage type.
+  6. **Access Patterns**: Understand how frequently and in what manner your application will access the data (e.g., random vs. sequential access).
 
 - By carefully evaluating these factors, you can select the most appropriate storage type that aligns with your system design requirements and optimizes performance, cost, and scalability.
